@@ -1,0 +1,5 @@
+fastapi
+Flask[async]
+Python-DotEnv
+smskillsdk
+uvicorn

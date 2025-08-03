@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Avatar Chatbot</title>
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+</head>
+<body>
+    <h2>Talk with your AI chatbot</h2>
+
+    <!-- Chat history display -->
+    <div id="chat-history" style="border: 1px solid #ddd; padding: 10px; height: 300px; overflow-y: auto;"></div>
+
+    <!-- User input field -->
+    <input type="text" id="userInput" placeholder="Type any question you have" style="width: 80%; padding: 10px;"/>
+    <button onclick="sendMessage()" style="padding: 10px;">send</button>
+
+    <script>
+        // Generate a unique session_id for each user session
+        let session_id = "session_" + Math.random().toString(36).substr(2, 9);
+
+        // Send message to backend (Intermediary API)
+        async function sendMessage() {
+            const userMessage = document.getElementById("userInput").value;
+            if (!userMessage) return;
+
+            const chatHistory = document.getElementById("chat-history");
+            chatHistory.innerHTML += `<p><strong>You：</strong>${userMessage}</p>`;
+
+            // ✅ revise backend URL，add /chat
+            //https://77fe45361b97.ngrok-free.app/chat
+            const response = await fetch("http://127.0.0.1:8000/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    session_id: session_id,
+                    user_message: userMessage
+                })
+            });
+
+            const data = await response.json();
+
+            chatHistory.innerHTML += `<p><strong>Chatbot：</strong>${data?.chatgpt_text || "something wrong"}</p>`;
+
+            if (data.avatar_audio_url) {
+                const audio = new Audio(data.avatar_audio_url);
+                audio.play();
+            }
+
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+            document.getElementById("userInput").value = '';
+        }
+    </script>
+
+    <!-- Soul Machines avatar setting -->
+    <script 
+    src="https://static.soulmachines.com/widget-snippet-1.12.0.min.js"
+    data-sm-api-key="eyJzb3VsSWQiOiJkZG5hLXhpYW5nLWRhaS1vcmdhODExLS1kdXJmMjUiLCJhdXRoU2VydmVyIjoiaHR0cHM6Ly9kaC5zb3VsbWFjaGluZXMuY2xvdWQvYXBpL2p3dCIsImF1dGhUb2tlbiI6ImFwaWtleV92MV84NDAxMDgxNi02YjNjLTQ5ODUtOGMyOS0yYzI3ZjVmMDJiZTQifQ=="
+    ></script>       
+
+</body>
+</html>
