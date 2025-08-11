@@ -92,7 +92,7 @@ async def execute(request: ExecuteRequest) -> ExecuteResponse:
     user_input = request.text
     print("Received user input:", user_input)
 
-    # 2 Handle the first-time page visit (empty input or 'Welcome')
+    # 2 处理首次进入页面的情况（空输入或 Welcome）
     if user_input.lower() in ["", "welcome"]:
         prompt_text = "Let's talk about your goals for this year. What would you like to achieve?"
         output = Output(
@@ -111,7 +111,7 @@ async def execute(request: ExecuteRequest) -> ExecuteResponse:
 
         return ExecuteResponse(output=output, endConversation=False)
 
-    # 3. Call OpenAI GPT-4 to get a response
+    # 3. 调用 OpenAI GPT-4 获取回复
     response = client.chat.completions.create(
         model="gpt-4.1-nano", 
         messages=[
@@ -122,7 +122,7 @@ async def execute(request: ExecuteRequest) -> ExecuteResponse:
     )
     spoken_response = response.choices[0].message.content
 
-    # 4. Construct the response content
+    # 4. 构造返回内容
     output = Output(
         intent="ChatGPTResponse",
         text=spoken_response,
