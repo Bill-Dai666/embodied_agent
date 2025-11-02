@@ -12,7 +12,7 @@ def create_app():
   )
 
   # Add API route
-  app.include_router(router=skill.router)
+  app.include_router(router=skill.router, prefix = '/api')
 
   # Setup template rendering
   # BASE_DIR = os.path.dirname(os.path.abspath(__file__))

@@ -4,8 +4,15 @@
     <meta charset="UTF-8">
     <title>Avatar Chatbot</title>
     <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="stylesheet" href="static/styles.css" />
 </head>
 <body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <img src="static/nyu-logo.svg" alt="NYU" class="logo" />
+      
+    </div>
+  </header>
     <h2>Talk with your AI chatbot</h2>
 
     <!-- Chat history display -->
@@ -16,6 +23,43 @@
     <button onclick="sendMessage()" style="padding: 10px;">send</button>
 
     <script>
+        // URL 参数抓取和存储
+        const urlParams = new URLSearchParams(window.location.search);
+        let articleId = urlParams.get('article_id') || '';
+        let responseId = urlParams.get('response_id') || '';
+
+        // 存储到 sessionStorage 以便在整个会话中保持
+        if (articleId) {
+            sessionStorage.setItem('article_id', articleId);
+            console.log('📄 抓取到 article_id:', articleId);
+        } else {
+            // 尝试从 sessionStorage 获取
+            const storedArticleId = sessionStorage.getItem('article_id');
+            if (storedArticleId) {
+                articleId = storedArticleId;
+                console.log('📄 从 sessionStorage 获取 article_id:', articleId);
+            }
+        }
+
+        if (responseId) {
+            sessionStorage.setItem('response_id', responseId);
+            console.log('🆔 抓取到 response_id:', responseId);
+        } else {
+            // 尝试从 sessionStorage 获取
+            const storedResponseId = sessionStorage.getItem('response_id');
+            if (storedResponseId) {
+                responseId = storedResponseId;
+                console.log('🆔 从 sessionStorage 获取 response_id:', responseId);
+            }
+        }
+
+        // 显示当前参数状态（可选，用于调试）
+        if (articleId || responseId) {
+            console.log('🔗 当前页面参数状态:');
+            console.log('  article_id:', articleId || '(未设置)');
+            console.log('  response_id:', responseId || '(未设置)');
+        }
+
         // Generate a unique session_id for each user session
         let session_id = "session_" + Math.random().toString(36).substr(2, 9);
 
@@ -30,13 +74,30 @@
                 chatHistory.innerHTML += `<p><strong>You：</strong>${userMessage}</p>`;
             }
 
-            const response = await fetch("http://127.0.0.1:8000/chat", {
+            // 构建请求体，包含 URL 参数
+            const requestBody = {
+                session_id: session_id,
+                user_message: userMessage
+            };
+
+            // 添加 URL 参数到请求体
+            if (articleId) {
+                requestBody.article_id = articleId;
+            }
+            if (responseId) {
+                requestBody.response_id = responseId;
+            }
+
+            console.log('📤 发送请求体:', requestBody);
+
+            const baseUrl = window.location.pathname.startsWith("/chat_based")
+            ? "/chat_based"
+            : "";
+
+            const response = await fetch(`${baseUrl}/chat`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    session_id: session_id,
-                    user_message: userMessage
-                })
+                body: JSON.stringify(requestBody)
             });
 
             const data = await response.json();
@@ -58,5 +119,6 @@
     </script>
        
 
+  <footer class="footnote">© 2025 NYU · Internal demo. All rights reserved.</footer>
 </body>
 </html>

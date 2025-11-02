@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+__MACOSX/
+Thumbs.db
+
+# Large zip files (if you don't want to commit them)
+*.zip
+
+# Backup files
+*.bak.*
+*.backup
+
+# Data files (uncomment if you don't want to commit CSV/data files)
+# *.csv
+# *.json
+
