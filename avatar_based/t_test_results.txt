@@ -1,4 +1,0 @@
-T-test Results
-
-Quality: t=0.980, p=0.3720
-Empathy: t=1.014, p=0.3643
