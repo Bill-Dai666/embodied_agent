@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+
+# Model checkpoints (large files - uncomment if you don't want to upload)
+# *.ckpt
+# *.pth
+# *.pt
+
+# Logs and experiments
+*.log
+events.out.tfevents.*
+lightning_logs/
+
+# API Keys (important!)
+**/config.py
+llm/config.py
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Data files (uncomment if data is too large)
+# *.csv
+# *.json
+
