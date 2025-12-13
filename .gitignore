@@ -12,6 +12,10 @@ env/
 dist/
 build/
 
+# Environment variables
+.env
+.env.local
+
 # IDE
 .vscode/
 .idea/
@@ -26,6 +30,7 @@ build/
 .Spotlight-V100
 .Trashes
 Thumbs.db
+__MACOSX/
 
 # Model checkpoints (large files - uncomment if you don't want to upload)
 # *.ckpt
@@ -45,7 +50,15 @@ llm/config.py
 .ipynb_checkpoints
 *.ipynb
 
+# Large zip files (if you don't want to commit them)
+*.zip
+
+# Backup files
+*.bak.*
+*.backup
+
 # Data files (uncomment if data is too large)
 # *.csv
 # *.json
+
 

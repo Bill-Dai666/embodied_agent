@@ -1,0 +1,6 @@
+{
+  "python.defaultInterpreterPath": "/Users/daixiang/opt/anaconda3/envs/flask1/bin/python",
+  "terminal.integrated.env.osx": {
+    "PATH": "/Users/daixiang/opt/anaconda3/envs/flask1/bin:${env:PATH}"
+  }
+}
