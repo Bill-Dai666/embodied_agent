@@ -1,3 +1,5 @@
+Specific experiment code can be checked here: https://github.com/Bill-Dai666/embodied_agent
+
 📋 Project Overview
 
 This project implements conversational AI agents that engage users in discussions about news articles as part of a crowdsourcing research experiment. Both implementations use OpenAI's GPT models for generating empathetic, contextual responses and store conversation data in MongoDB for analysis. This project supports academic research comparing different interaction modalities (**embodied vs. text-based**) for AI conversational agents in experimental settings.
