@@ -4,7 +4,7 @@ A research project exploring different interaction modalities for AI-powered con
 
 Project Overview
 
-This project implements conversational AI agents that engage users in discussions about news articles as part of a crowdsourcing research experiment. Both implementations use OpenAI's GPT models for generating empathetic, contextual responses and store conversation data in MongoDB for analysis.
+This project implements conversational AI agents that engage users in discussions about news articles as part of a crowdsourcing research experiment. Both implementations use OpenAI's GPT models for generating empathetic, contextual responses and store conversation data in MongoDB for analysis. This project supports academic research comparing different interaction modalities (embodied vs. text-based) for AI conversational agents in experimental settings.
 
 Components
 
@@ -39,10 +39,3 @@ Both implementations share:
 - URL parameter support for tracking article IDs and response IDs
 - Empathetic conversation guidelines for natural dialogue
 
-Setup
-
-Each subdirectory contains its own setup instructions. See individual README files for environment variable configuration, dependency installation, and server startup instructions.
-
-Research Purpose
-
-This project supports academic research comparing different interaction modalities (embodied vs. text-based) for AI conversational agents in experimental settings.
