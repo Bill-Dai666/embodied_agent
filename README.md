@@ -1,10 +1,8 @@
-**Embodied Agent Project**
-
-A research project exploring different interaction modalities for AI-powered conversational agents discussing news articles. This repository contains two distinct implementations of chatbot interfaces for conducting user studies and experiments.
-
 **Project Overview**
 
 This project implements conversational AI agents that engage users in discussions about news articles as part of a crowdsourcing research experiment. Both implementations use OpenAI's GPT models for generating empathetic, contextual responses and store conversation data in MongoDB for analysis. This project supports academic research comparing different interaction modalities (embodied vs. text-based) for AI conversational agents in experimental settings.
+
+
 
 **Components**
 
@@ -17,7 +15,8 @@ Backend: FastAPI skill adapter that handles NLP processing and integrates with S
 Features: Visual avatar presence, video/audio streaming, emotion detection, and content cards
 Use Case: Provides an immersive, face-to-face conversation experience with an embodied AI agent
 
-Tech Stack: React, Redux, FastAPI, Soul Machines SDK, OpenAI, MongoDB
+Tech Stack: React, Redux, FastAPI, Soul Machines SDK, OpenAI, MongoDB, Nginx
+
 
 * chat_based/
 
@@ -28,7 +27,9 @@ Backend: FastAPI server with REST API endpoints
 Features: Clean text-based conversation, URL parameter support for article/resource tracking
 Use Case: Provides a lightweight, accessible chat interface for comparison studies
 
-Tech Stack: FastAPI, OpenAI, MongoDB, HTML/JavaScript
+Tech Stack: FastAPI, OpenAI, MongoDB, HTML/JavaScript, Nginx
+
+
 
 **Key Features**
 
